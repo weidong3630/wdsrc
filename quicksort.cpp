@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void QuickSort(int pData[], int nHigh, int nLow);
+void QuickSort(int pData[], int nLow, int nHigh);
 
 int main()
 {
@@ -17,9 +17,41 @@ int main()
     return 0;
 }
 
-int Swap(int& n1, int& n2);
-int Partition(int pData[], int nHigh, int nLow);
-void QuickSort(int pData[], int nHigh, int nLow)
+void Swap(int& n1, int& n2)
 {
-    int nInDex = Pari
+    int n = n1;
+    n1 = n2;
+    n2 = n;
+}
+
+int Partition(int pData[], int nLow, int nHigh)
+{
+    const int nBase = pData[nLow];
+    while (nLow < nHigh)
+    {
+        while (nLow < nHigh && pData[nHigh] >= nBase)
+        {
+            -- nHigh;
+        }
+        
+        Swap(pData[nLow], pData[nHigh]);
+        while (nLow < nHigh && pData[nLow] <= nBase)
+        {
+            ++ nLow;
+        }
+        
+        Swap(pData[nHigh], pData[nLow]);
+    }
+    
+    return nLow;
+}
+
+void QuickSort(int pData[], int nLow, int nHigh)
+{
+    if (pData != NULL && nLow >= 0 && nLow <= nHigh)
+    {
+        int nInDex = Partition(pData, nHigh, nLow);
+        QuickSort(pData, 0, nIndex - 1);
+        QuickSort(pData, nIndex + 1, nLow);
+    }
 }
