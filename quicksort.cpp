@@ -50,8 +50,8 @@ void QuickSort(int pData[], int nLow, int nHigh)
 {
     if (pData != NULL && nLow >= 0 && nLow <= nHigh)
     {
-        int nIndex = Partition(pData, nHigh, nLow);
+        int nIndex = Partition(pData, nLow, nHigh);
         QuickSort(pData, 0, nIndex - 1);
-        QuickSort(pData, nIndex + 1, nLow);
+        QuickSort(pData, nIndex + 1, nHigh);
     }
 }
